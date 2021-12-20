@@ -1,0 +1,20 @@
+.floatLabel {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.floatLabel label{
+    color: black;
+    position: absolute;
+    transform: translate(16px, 14px) scale(1);
+    pointer-events: none;
+    transform-origin: top left;
+    transition: all 0.2s ease-out;
+  }
+  
+  .floatLabel:focus-within label {
+    transform: translate(16px, 0px) scale(0.75);
+  }
+  .floatLabel .Active {
+    transform: translate(16px, 0px) scale(0.75);
+  }

@@ -1,57 +1,91 @@
-import React, {FunctionComponent} from "react";
-import {Button, FormControl, FormErrorMessage, Input, Stack, Text} from "@chakra-ui/react";
+import React, {FunctionComponent, useState} from "react";
+import {Button, Container, FormControl, Input, SimpleGrid, Stack, Text} from "@chakra-ui/react";
+import {motion} from "framer-motion";
+
+import "./components/floatLabel.css";
 
 interface RegisterProps {}
 
-function validateEmail(value: string) {
-  let error;
+const Register: FunctionComponent<RegisterProps> = () => {
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
-  if (!value) {
-    error = "Email is required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = "Please enter a valid email address";
+  function validateEmail(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const value = event.currentTarget.email.value;
+
+    if (value == "") {
+      setErrorMsg("Email is required");
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      setErrorMsg("Please enter a valid email address");
+    } else {
+      setErrorMsg("");
+    }
+  }
+  function handleTextChange(text: string) {
+    if (text !== "") {
+      setIsActive(true);
+      setErrorMsg("");
+    } else {
+      setIsActive(false);
+    }
   }
 
-  return error;
-}
-
-const Register: FunctionComponent<RegisterProps> = () => {
   return (
     <Stack
-      alignItems="center"
-      backgroundColor="secondary.400"
-      borderRadius="lg"
-      boxShadow=" rgba(0, 0, 0, 0.6) 4px 4px 6px"
-      className="Register"
-      height={[80, 80]}
-      justifyContent="center"
-      paddingX={[4, 16]}
-      paddingY={[6, 8]}
-      position="relative"
-      spacing={[2, 8]}
-      top={[32, 40]}
-      width={["90%", "4xl"]}
+      alignItems={["center", "flex-start"]}
+      backgroundColor="secondary.900"
+      color="white"
+      paddingBottom={[16, 16]}
+      paddingTop={[16, 24]}
+      role="contentinfo"
     >
-      <Text fontSize={["md", "3xl"]} fontWeight="700" paddingBottom={2}>
-        Get early access today
-      </Text>
-      <Text fontSize={["xs", "md"]} paddingBottom={4} textAlign="center">
-        It only takes a minute to sign up and our free starter tier is extremely generous. If you
-        have any questions, our support team would be happy to help you.
-      </Text>
+      <Container maxWidth="container.xl">
+        <motion.div
+          initial="hidden"
+          transition={{duration: 1}}
+          variants={{
+            visible: {x: 0},
+            hidden: {x: "-100%"},
+          }}
+          viewport={{once: true}}
+          whileInView="visible"
+        >
+          <SimpleGrid columns={[1, 2]} spacing={[8, 32]}>
+            <Stack>
+              <Text fontSize={["md", "3xl"]} fontWeight="700" paddingBottom={2}>
+                Get early access today
+              </Text>
+              <Text fontSize={["sm", "md"]} paddingBottom={4}>
+                It only takes a minute to sign up and our free starter tier is extremely generous.
+                If you have any questions, our support team would be happy to help you.
+              </Text>
+            </Stack>
 
-      <Stack direction={["column", "row"]} spacing={[4, 2]}>
-        <FormControl>
-          <Input id="email" placeholder="email@example.com" variant="filled" />
-          <FormErrorMessage fontSize="xs" marginStart={8}>
-            {/* form.errors.email */}
-          </FormErrorMessage>
-        </FormControl>
+            <form onSubmit={validateEmail}>
+              <Stack alignItems={["center", "flex-start"]} width="100%">
+                <Stack spacing={[4, 2]} width={["80%", "100%"]}>
+                  <FormControl className="floatLabel" display="flex" isInvalid={errorMsg != ""}>
+                    <Input
+                      h={12}
+                      name="email"
+                      variant="filled"
+                      onChange={(e) => handleTextChange(e.target.value)}
+                    />
+                    <label className={isActive ? "Active" : ""}>email@example.com</label>
 
-        <Button type="submit" variant="solid">
-          Get Started For Free
-        </Button>
-      </Stack>
+                    {errorMsg}
+                  </FormControl>
+
+                  <Button type="submit" variant="solid" width="auto">
+                    Get Started For Free
+                  </Button>
+                </Stack>
+              </Stack>
+            </form>
+          </SimpleGrid>
+        </motion.div>
+      </Container>
     </Stack>
   );
 };

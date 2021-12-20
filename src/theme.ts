@@ -5,12 +5,13 @@ export default extendTheme({
     global: {
       body: {
         backgroundColor: "white",
-        color: "primary.500",
+        color: "primary.400",
       },
     },
   },
   colors: {
     primary: {
+      100: "#6b9bff",
       200: "hsl(224, 93%, 58%)",
       400: "hsl(243, 87%, 12%)",
       500: "hsl(170, 45%, 43%)",
@@ -39,9 +40,12 @@ export default extendTheme({
           field: {
             bg: "white",
             color: "black",
-            borderRadius: "full",
+            borderRadius: "sm",
             fontSize: ["xs", "inherit"],
             _focus: {
+              bg: "white",
+            },
+            _hover: {
               bg: "white",
             },
           },
@@ -90,15 +94,15 @@ export default extendTheme({
           },
         },
         solid: {
-          bg: "primary.400",
+          bg: "primary.200",
           color: "white",
           fontFamily: "Raleway",
           fontSize: "sm",
           fontWeight: "700",
-          w: "auto",
-          px: [12],
+          px: 12,
+          w: "fit-content",
           _hover: {
-            bg: "primary.300",
+            bg: "primary.100",
             color: "white",
           },
         },
