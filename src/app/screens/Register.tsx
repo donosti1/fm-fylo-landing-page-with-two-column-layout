@@ -51,7 +51,7 @@ const Register: FunctionComponent<RegisterProps> = () => {
           viewport={{once: true}}
           whileInView="visible"
         >
-          <SimpleGrid columns={[1, 2]} spacing={[8, 32]}>
+          <SimpleGrid columns={[1, 2]} spacing={[8, 28]}>
             <Stack>
               <Text fontSize={["md", "3xl"]} fontWeight="700" paddingBottom={2}>
                 Get early access today
