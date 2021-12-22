@@ -6,8 +6,8 @@ This is a solution to the [Fylo landing page with two column layout challenge on
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-<!--   - [Screenshot](#screenshot)
-  - [Links](#links) -->
+  - [Screenshot](#screenshot)
+  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
@@ -23,14 +23,14 @@ Users should be able to:
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 
-<!-- ### Screenshot
+### Screenshot
 
 ![](./screenshot.jpg)
 
 ### Links
 
 - Solution URL: [https://github.com/donosti1/fm-fylo-landing-page-with-two-column-layout](https://github.com/donosti1/fm-fylo-landing-page-with-two-column-layout)
-- Live Site URL: [https://fm-fylo-landing-page-with-two-column-layout-donosti1.vercel.app/](https://fm-fylo-landing-page-with-two-column-layout-donosti1.vercel.app/) -->
+- Live Site URL: [https://fm-fylo-landing-page-with-two-column-layout-donosti1.vercel.app/](https://fm-fylo-landing-page-with-two-column-layout-donosti1.vercel.app/)
 
 ## My process
 

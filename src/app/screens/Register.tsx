@@ -1,8 +1,9 @@
-import React, {FunctionComponent, useState} from "react";
-import {Button, Container, FormControl, Input, SimpleGrid, Stack, Text} from "@chakra-ui/react";
+import React, {ChangeEventHandler, FunctionComponent, useState} from "react";
+import {Button, Container, SimpleGrid, Stack, Text} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 
 import "./components/floatLabel.css";
+import CustomInput from "./components/CustomInput";
 
 interface RegisterProps {}
 
@@ -22,14 +23,14 @@ const Register: FunctionComponent<RegisterProps> = () => {
       setErrorMsg("");
     }
   }
-  function handleTextChange(text: string) {
-    if (text !== "") {
+  const handleTextChange = (e: React.FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.value !== "") {
       setIsActive(true);
       setErrorMsg("");
     } else {
       setIsActive(false);
     }
-  }
+  };
 
   return (
     <Stack
@@ -65,17 +66,11 @@ const Register: FunctionComponent<RegisterProps> = () => {
             <form onSubmit={validateEmail}>
               <Stack alignItems={["center", "flex-start"]} width="100%">
                 <Stack spacing={[4, 2]} width={["80%", "100%"]}>
-                  <FormControl className="floatLabel" display="flex" isInvalid={errorMsg != ""}>
-                    <Input
-                      h={12}
-                      name="email"
-                      variant="filled"
-                      onChange={(e) => handleTextChange(e.target.value)}
-                    />
-                    <label className={isActive ? "Active" : ""}>email@example.com</label>
-
-                    {errorMsg}
-                  </FormControl>
+                  <CustomInput
+                    errorMsg={errorMsg}
+                    handleTextChange={(e) => handleTextChange(e)}
+                    isActive={isActive}
+                  />
 
                   <Button type="submit" variant="solid" width="auto">
                     Get Started For Free

@@ -3,6 +3,8 @@ import {Button, Container, Icon, Image, Stack, Text} from "@chakra-ui/react";
 import {motion} from "framer-motion";
 import {FaFacebookF, FaInstagram, FaTwitter} from "react-icons/fa";
 
+import Logo from "./components/Logo";
+
 const productMenuItems = ["About Us", "Jobs", "Press", "Blog"];
 const companyMenuItems = ["Contact Us", "Terms", "Privacy"];
 
@@ -68,8 +70,8 @@ const Footer = () => {
           viewport={{once: true}}
           whileInView="visible"
         >
-          <Stack spacing={8}>
-            <Image alt="logo" height={[12, 10]} src="assets/logo.svg" width={[40, 32]} />
+          <Stack alignItems="flex-start" spacing={8}>
+            <Logo isoColor="white" logoColor="white" />
             <Stack
               direction={["column", "row"]}
               justifyContent="space-between"

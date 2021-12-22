@@ -13,7 +13,7 @@ import {
 import {motion} from "framer-motion";
 
 import "./components/floatLabel.css";
-import IconArrow from "./components/IconArrow";
+import IconArrow from "/assets/icon-arrow.svg";
 
 interface RegisterProps {}
 const Testimonial = () => {
@@ -56,7 +56,7 @@ const CTA: FunctionComponent<RegisterProps> = () => {
       backgroundImage="url('/assets/illustration-2.svg')"
       backgroundPosition={["center top", "90% center"]}
       backgroundRepeat="no-repeat"
-      backgroundSize={["80%", "40%"]}
+      backgroundSize={["80%", "36%"]}
       color="primary.400"
       overflowX="hidden"
       paddingBottom={[16, 16]}
@@ -69,14 +69,18 @@ const CTA: FunctionComponent<RegisterProps> = () => {
           transition={{duration: 1}}
           variants={{
             visible: {x: 0},
-            hidden: {x: ["100%", "130%"]},
+            hidden: {x: ["-100%", "-100%"]},
           }}
           viewport={{once: true}}
           whileInView="visible"
         >
           <Grid gap={8} templateColumns={["repeat(1, 1fr)", "repeat(5, 1fr)"]}>
             <GridItem colSpan={3}>
-              <Stack alignItems={["center", "flex-start"]} spacing={12}>
+              <Stack
+                alignItems={["center", "flex-start"]}
+                backgroundColor="secondary.50"
+                spacing={12}
+              >
                 <Heading as="h2" fontSize={["xl", "4xl"]}>
                   Stay productive, wherever you are
                 </Heading>
@@ -102,25 +106,11 @@ const CTA: FunctionComponent<RegisterProps> = () => {
                   color="primary.500"
                   fontSize={["md", "xl"]}
                   px={0}
+                  rightIcon={<Image h={5} src={IconArrow} w={5} />}
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
                 >
                   See how Fylo works
-                  <Stack
-                    as="span"
-                    display="inline-block"
-                    height={6}
-                    justifyContent="center"
-                    paddingLeft={4}
-                  >
-                    <IconArrow
-                      fill={
-                        hover
-                          ? "var(--chakra-colors-primary-500)"
-                          : "var(--chakra-colors-primary-500)"
-                      }
-                    />
-                  </Stack>
                 </Button>
                 <Testimonial />
               </Stack>

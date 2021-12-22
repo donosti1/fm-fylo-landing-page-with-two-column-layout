@@ -43,6 +43,8 @@ export default extendTheme({
             bg: "white",
             color: "black",
             borderRadius: "sm",
+            borderColor: "secondary.700",
+            borderWidth: 1,
             fontSize: ["xs", "inherit"],
             _focus: {
               bg: "white",
@@ -60,19 +62,6 @@ export default extendTheme({
         height: 12,
       },
       variants: {
-        "outline-darkBg": {
-          color: "white",
-          borderColor: "white",
-          borderWidth: 1,
-          borderRadius: 0,
-          px: 6,
-          /* h: 8,
-          letterSpacing: "1.2px", */
-          _hover: {
-            color: "primary.500",
-            bg: "white",
-          },
-        },
         "footer-link": {
           color: "white",
           fontWeight: 400,
@@ -84,15 +73,14 @@ export default extendTheme({
           },
         },
         "header-link": {
-          bg: "transparent",
-          color: "secondary.500",
+          color: "primary.400",
           fontFamily: "Raleway",
-          fontSize: ["sm", "lg"],
+          fontSize: ["xs", "lg"],
+          fontWeight: 400,
           paddingInlineStart: [0, "inherit"],
           paddingInlineEnd: [0, "inherit"],
           _hover: {
-            bg: "white",
-            color: "primary.500",
+            textDecoration: "underline",
           },
         },
         solid: {
